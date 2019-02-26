@@ -1,0 +1,17 @@
+{
+    "name": "nandd_server",
+        "version": "0.0.1",
+        "dependencies": {
+                "express": "latest",
+                "mongodb": "latest",
+                "body-parser": "latest",
+                "validator":"latest",
+				"request": "latest",
+				"nodemailer": "latest",
+                "node-monkey": "latest"
+        },
+        "repository": {
+                "type": "git",
+				"url": "git@heroku.com:quiet-mesa-7734.git"
+        }
+}

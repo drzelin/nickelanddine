@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Nickel and Dine</title>
+    <meta charset="utf-8" />
+
+    <!--using bootstrap CSS links-->
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="nd-style.css">
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#search").click(function () {
+                if ($("#address").val() != "" && $("#fooditem").val() != "" && $("#budget").val() != "") {
+                    $.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + $("#address").val(),
+                        function (data) {
+                            lat = data.results[0].geometry.location.lat;
+                            lng = data.results[0].geometry.location.lng;
+                            params = "?" + "lat=" + lat + "&" + "lng=" + lng;
+                            params += "fooditem=" + $("#fooditem").val() + "&" + "budget=" + $("#budget").val();
+                            window.location.href = "/results.html" + params;
+                        });
+                }
+            });
+
+            $("#geo").click(function () {
+
+
+                // get location
+                var my_lat;
+                var my_lng;
+                var address;
+                if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+                    navigator.geolocation.getCurrentPosition(function (position) { // the function runs when user's location is tracked              
+                        my_lat = position.coords.latitude;
+                        my_lng = position.coords.longitude;
+
+                        // reverse geocode
+                        $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + my_lat + "," + my_lng + "&sensor=false")
+                            .done(function (data) {
+                                address = data.results[0].formatted_address;
+                                $("#address").val(address);
+                            });
+                    });
+                }
+                //		  else {
+                //		    $("body").append("<p>Geolocation is not supported by your web browser.  What a shame!</p>");
+                //		  }
+
+            });
+        });
+    </script>
+</head>
+
+
+<body>
+
+    <!-- navbar html -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index.html"><span>nickel and dine</span></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">About</a>
+                    </li>
+                </ul>
+
+            <!-- Collect the nav links, forms, and other content for toggling 
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="button"><a href="/about.html">About <span class="sr-only">(current)</span></a></li>
+        
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login.html">Login</a></li>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!--Main Content Div -->
+    <div class="container-fluid">
+        <div class="jumbotron" id="home-jumbo">
+            <div class="jumbotron" id="inner-jumbo">
+                <h1>Nickel and Dine</h1>
+                <p>It's like Grubhub, but you can't actually order anything!</p>
+                <!-- <p>We live to serve, we aim to please, we don't put out but we sure will tease!</p> -->
+
+
+               
+            </div>
+        </div>
+    </div>
+    <!-- div container fluid-->
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Nickel and Dine</title>
+    <meta charset="utf-8" />
+
+    <!--using bootstrap CSS links-->
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="nd-style.css">
+
+
+    <script>
+        $(document).ready(function () {
+            var zip = "02155";
+			var my_lat = 0;
+			var my_lng = 0;
+            
+            $("#search").click(function () {
+                if ($("#address").val() != "" && $("#fooditem").val() != "" && $("#budget").val() != "") {
+                            params = "?" + "lat=" + my_lat + "&" + "lng=" + my_lng;
+                            params += "&fooditem=" + $("#fooditem").val() + "&" + "zip=" + zip;
+                            window.location.href = "/results.html" + params;
+
+				}
+            });
+
+            $("#geo").click(function () {
+
+
+                // get location
+                var my_lat;
+                var my_lng;
+                var address;
+                if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+                    navigator.geolocation.getCurrentPosition(function (position) { // the function runs when user's location is tracked              
+                        my_lat = position.coords.latitude;
+                        my_lng = position.coords.longitude;
+
+                        // reverse geocode
+                        $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + my_lat + "," + my_lng + "&sensor=false")
+                            .done(function (data) {
+                                zip = data.results[0].address_components[ data.results[0].address_components.length-1  ].short_name;
+                                address = data.results[0].formatted_address;
+                                $("#address").val(address);
+                            });
+                    });
+                }
+
+            });
+        });
+        
+        
+    </script>
+</head>
+
+
+<body>
+
+    <!-- navbar html -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span>nickel and dine</span></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about.html">About</a>
+                    </li>
+                </ul>
+
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!--Main Content Div -->
+    <div class="container-fluid">
+        <div class="jumbotron" id="home-jumbo">
+            <div class="jumbotron" id="inner-jumbo">
+                <h1>Hungry?</h1>
+                <h3>Welcome to nickel and dine. </h3>
+                <p>Search local businesses for your favorite foods. We'll find you the cheapest order that meets the delivery minimum. Unlike GrubHub, we won't nickel and dime you. The price you see is the price you pay!</p>
+
+
+                <!--input panel-->
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel content">
+
+                        <div class="container-fluid" id="searching-stuff">
+                            <h4>Delivery Address:</h4>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="geo"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                </button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Enter location..." id="address">
+
+                            </div>
+                            <!-- /input-group -->
+
+                            <h4>Search by food:</h4>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" disabled="true"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                                </button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="What are you in the mood for?" id="fooditem">
+
+
+                            </div>
+                            <!-- /input-group -->
+                            <p></p>
+                            <p><a class="btn btn-primary btn-lg" href="#" role="button" id="search">Search</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-6 -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- div container fluid-->
+</body>
+
+</html>

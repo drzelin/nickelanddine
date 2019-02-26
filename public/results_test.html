@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Nickel and Dine</title>
+    <meta charset="utf-8" />
+
+    <!--using bootstrap CSS links-->
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="nd-style.css">
+
+    <script>
+        $(document).ready(function () {
+            var sPageURL = window.location.search.substring(1);
+            var params = sPageURL.split('&');
+            $.get("/get_orders" + "&" + params, function (data) {
+                console.log(data);
+            });
+            addOrder();
+
+        });
+
+        function addOrder(restaurant_name, distance, delivery_minimum, delivery_fee, order, tax_rate, tip_rate) {
+
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <!-- navbar html -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">nickel and dine</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!--Main Content Div -->
+    <div class="container-fluid" id="back">
+        <div class="container-fluid">
+            <div class="jumbotron container" id="result-jumbo">
+                <div class="col-md-9">
+                    <h2>Top Results</h2>
+
+
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+
+
+
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    <!-- ---------ORDER----------- -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" class="col-md-6" id="restaurant-name">Restaurant Name <a class="btn btn-primary btn-md" href="#" role="button" id="place-order">Select</a></h3>
+
+                        </div>
+                        <div class="container-fluid" class="panel-content">
+                            <div class="col-md-9">
+                                <div class="container-fluid">
+                                    <div class="container-fluid" id="table-div">
+                                        <!-- ORDER TABLE -->
+
+                                        <table class="table" id="order-table">
+
+                                            <tr class="bottom-border" id="table-titles">
+                                                <td id="col-1">Items</td>
+                                                <td id="col-2"></td>
+                                                <td id="col-3"></td>
+                                                <td id="col-4">Price</td>
+                                                <td id="col-5"></td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td id="item1">Large Cheese</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price1">$14.00</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row2">
+                                                <td id="item2">Garlic Bread</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price2">$5.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr id="row3" class="bottom-border">
+                                                <td id="item3">Soda</td>
+                                                <td class="spacer"></td>
+                                                <td></td>
+                                                <td id="price3">$3.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr id="row-sub">
+                                                <td class="spacer"></td>
+                                                <td>subtotal: </td>
+                                                <td></td>
+                                                <td id="subtotal">$22.50</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spacer"></td>
+                                                <td id="subtotal">tax: </td>
+                                                <td></td>
+                                                <td id="price">$1.44</td>
+                                                <td id="tip-col"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left col div-->
+                            <div class="col-md-3">
+                                <table id="right-col">
+                                    <tr>
+                                        <td>
+                                            <h4 class="move-left">Price:</h4>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled=true class="form-control input-sm">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="basic-info">
+                                    <tr>
+                                        <td id="left-space">distance:</td>
+                                        <td id="info-vars">0.34 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery min:</td>
+                                        <td id="info-vars">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="left-space">delivery fee:</td>
+                                        <td id="info-vars">free!</td>
+                                    </tr>
+                                </table>
+                                <!-- basic info table-->
+
+                            </div>
+                        </div>
+                        <!-- panel content-->
+                    </div>
+                    <!-- ---------ORDER----------- -->
+                    
+                    
+                    
+                    
+                </div>
+                <!-- orders col-->
+
+                <div class="col-md-3">
+                    <div id="jumbo-sum">
+                        <h4>My Order</h4>
+                        <div>
+                            <h3>Restaurant Name</h3>
+                            <p>Item1, Item2, Item3...</p>
+
+                            <div class="input-group input-group-sm" id="tip-amt">
+                                <span class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tip: <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">10%</a>
+                                    </li>
+                                    <li><a href="#">15%</a>
+                                    </li>
+                                    <li><a href="#">20%</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Tip with cash</a>
+                                    </li>
+                                </ul>
+                                </span>
+                                <input type="text" class="form-control" placeholder="dollar amount" id="address">
+                            </div>
+                        </div>
+                        <div class="spacer">
+                            <p>Total:</p>
+                            <p>$$$$$</p>
+                            <a class="btn btn-primary btn-md" href="#" role="button" id="place-order2">Send Order</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--jumbotron-->
+        </div>
+    </div>
+</body>
+
+</html>

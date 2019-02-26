@@ -1,0 +1,297 @@
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.navbar {
+    background: #FEFDFB;
+    border: none;
+    border-radius: 0px;
+    margin-bottom: 2px;
+}
+
+#inner-jumbo {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#searching-stuff {
+    background-color: white;
+    border: 2px;
+    opacity: 1;
+}
+
+#search {
+    background-image: linear-gradient(#00AEEF, #007AA7);
+}
+
+#search:hover {
+	background: #007AA7;
+}
+
+.ontop {
+    z-index: 1;
+    position: absolute;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: black;
+}
+
+.navbar-header > navbar-brand {
+    color: black;
+    font-family: "Gothim", "Arial", sans-serif;
+}
+
+#subtotal {
+    text-align: right;
+}
+
+#tip {
+    text-align: right;
+}
+
+#tip-label {
+    font-family: Arial;
+    font-size: 20px;
+}
+
+#search {
+    float: right;
+    margin-bottom: 15px;
+}
+
+#tipsy {
+    margin: auto;
+    float: right;
+    padding-bottom: 10px;
+}
+
+#lefty {
+    padding-right: 6px;
+}
+
+#tip-box {
+    font-size: 18px;
+}
+
+#tip-amt {
+    float: left;
+}
+
+#panel-content {
+    padding-bottom: 15px;
+}
+
+#basic-info {
+    margin-top: 75px;
+    width: 250px;
+    margin-left: -25px;
+}
+
+#restaurant-name {
+    font-size: 24px;
+}
+
+.shade-green {
+    border-bottom: none;
+}
+
+.shade-lightgreen {
+    border-bottom: none;
+}
+
+#table-titles {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.move-left {
+    margin-left: -30px;
+    margin-right: 5px;
+}
+
+table tr {
+    border: none !important;
+}
+
+.navbar-default .navbar-brand {
+    color: black;
+}
+
+#order-table {
+    border: none;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.bottom-border {
+    border-bottom: 2pt solid black;
+}
+
+#col-1 {
+    width: 40%;
+}
+
+#col-2 {
+    width: 10%;
+}
+
+#col-3 {
+    width: 1%;
+}
+
+#col-4 {
+    width: 10%;
+}
+
+#col-5 {
+    width: 20%;
+}
+
+#place-order {
+    float: right;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: -4px;
+    background-image: linear-gradient(#00AEEF, #007AA7);
+    border: none;
+    color: white;
+}
+
+
+#place-order:hover {
+	background: #007AA7;
+}
+
+#place-order2 {
+    float: right;
+    padding: 12px;
+    font-size: 18px;
+    margin-top: 10px;
+    background-image: linear-gradient(#00AEEF, #007AA7);
+    border: none;
+    box-shadow: 1px 2px 7px black;
+}
+
+#place-order2:hover {
+	background: #007AA7;
+}
+
+.spacer {
+    padding: 10px;
+    margin-top: 50px;
+}
+
+#total_price {
+    float: left;
+    margin-right: -50px;
+}
+
+#total_word {
+    float: left;
+}
+
+#visible {
+    opacity: 1.0;
+}
+
+#home-jumbo {
+    background-image: url(Gom%20Gom.JPG);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.right-align {
+    text-align: right;
+}
+
+#left-space {
+    padding-right: 2px;
+    width: 30%;
+}
+
+#info-vars {
+    width: 50%;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#back {
+    background-image: url(results-background.jpg);
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+#results-title {
+
+}
+
+#jumbo-sum {
+    padding: 10px;
+    position: fixed;
+    background: #FEFDFB;
+    border-radius: 5px;
+    color: black;
+    box-shadow: 7px 2px 5px #525252;
+}
+
+#result-jumbo {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+body {}
+
+#dark {
+    background-color: #1D2F3E;
+}
+
+#darker {
+    background-color: #152737;
+}
+
+#blue {
+    background-color: #0f9fb4;
+}
+
+#green {
+    background-color: #0fb493;
+}
+
+#light {
+    background-color: #c9e1c1;
+}
+
+.panel > .panel-heading {
+    background: #F0F6FF;
+    color: black;
+}
+
+.panel-body {
+    background-color: #FEFDFB;
+}
+
+.panel {
+    border: none;
+}
+
+#right-col {
+    margin-top: 10px;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('loading.gif') 50% 50% no-repeat rgb(0, 174, 239);
+}
+
+#assuming {
+    font-size: 100%;
+}
